@@ -1,10 +1,11 @@
-import { Text, View } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import { Navigation } from './presentation/navigation';
 
 const App = () => {
   return (
-    <View>
-      <Text>MoviesApp</Text>
-    </View>
+    <NavigationContainer>
+      <Navigation />
+    </NavigationContainer>
   );
 };
 
