@@ -12,9 +12,9 @@ export const useMovies = () => {
   }, []);
 
   const initialLoad = async () => {
-    const nowPlayingMovies = await UseCases.moviesNowPlayingUseCase(
-      movieDBFetcher,
-    );
+    const upcoming = await UseCases.moviesUpcomingUseCase(movieDBFetcher);
+
+    console.log({ upcoming });
   };
 
   return {
