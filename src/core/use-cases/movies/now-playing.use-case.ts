@@ -6,7 +6,7 @@ export const moviesNowPlayingUseCase = async (
   fetcher: HttpAdapter,
 ): Promise<Movie[]> => {
   try {
-    const nowPlaying = await fetcher.get<NowPlayingResponse>('/now-playing');
+    const nowPlaying = await fetcher.get<NowPlayingResponse>('/now_playing');
 
     console.log(nowPlaying);
 
