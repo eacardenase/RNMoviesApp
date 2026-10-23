@@ -1,6 +1,5 @@
-import { StyleSheet, View } from 'react-native';
+import { ScrollView, StyleSheet, View } from 'react-native';
 import { Movie } from '../../../core/entities';
-import { ScrollView } from 'react-native-gesture-handler';
 import { MoviePoster } from './MoviePoster';
 
 interface Props {

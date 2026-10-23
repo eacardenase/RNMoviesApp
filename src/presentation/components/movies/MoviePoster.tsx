@@ -1,28 +1,47 @@
-import { Image, StyleSheet, View } from 'react-native';
+import { Image, Pressable, StyleSheet, View } from 'react-native';
 import { Movie } from '../../../core/entities';
+import { NavigationProp, useNavigation } from '@react-navigation/native';
+import { RootStackParams } from '../../navigation';
 
 interface Props {
   movie: Movie;
+  height?: number;
+  width?: number;
 }
 
-export const MoviePoster = ({ movie }: Props) => {
+export const MoviePoster = ({ movie, height = 420, width = 300 }: Props) => {
+  const navitation = useNavigation<NavigationProp<RootStackParams>>();
+
   return (
-    <View style={styles.container}>
-      <Image
-        style={styles.image}
-        source={{
-          uri: movie.poster,
-        }}
-      />
-    </View>
+    <Pressable
+      style={({ pressed }) => ({
+        ...styles.buttonContainer,
+        width,
+        height,
+        opacity: pressed ? 0.9 : 1,
+      })}
+      onPress={() => navitation.navigate('Details', { movieId: movie.id })}
+    >
+      <View style={{ ...styles.imageContainer, height, width }}>
+        <Image
+          style={styles.image}
+          source={{
+            uri: movie.poster,
+          }}
+        />
+      </View>
+    </Pressable>
   );
 };
 
 const styles = StyleSheet.create({
-  container: {
+  buttonContainer: {
+    marginHorizontal: 10,
+    paddingBottom: 20,
+    paddingHorizontal: 10,
+  },
+  imageContainer: {
     flex: 1,
-    width: 300,
-    height: 400,
     borderRadius: 18,
     shadowColor: '#000',
     shadowOffset: {
