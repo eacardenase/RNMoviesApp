@@ -3,7 +3,7 @@ import { MovieDBResponse } from '../../../infrastructure/interfaces';
 import { MovieMapper } from '../../../infrastructure/mappers';
 import { type Movie } from '../../entities';
 
-export const moviesTopRatesUseCase = async (
+export const moviesTopRatedUseCase = async (
   fetcher: HttpAdapter,
 ): Promise<Movie[]> => {
   try {
