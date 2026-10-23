@@ -22,7 +22,7 @@ export const MoviePoster = ({ movie, height = 420, width = 300 }: Props) => {
       })}
       onPress={() => navitation.navigate('Details', { movieId: movie.id })}
     >
-      <View style={{ ...styles.imageContainer, height, width }}>
+      <View style={styles.imageContainer}>
         <Image
           style={styles.image}
           source={{
@@ -36,9 +36,9 @@ export const MoviePoster = ({ movie, height = 420, width = 300 }: Props) => {
 
 const styles = StyleSheet.create({
   buttonContainer: {
-    marginHorizontal: 10,
+    marginHorizontal: 5,
     paddingBottom: 20,
-    paddingHorizontal: 10,
+    paddingHorizontal: 5,
   },
   imageContainer: {
     flex: 1,
