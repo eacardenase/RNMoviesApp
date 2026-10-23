@@ -8,8 +8,10 @@ interface Props {
 }
 
 export const HorizontalCarousel = ({ movies, title }: Props) => {
+  const height = title ? 260 : 220;
+
   return (
-    <View style={{ ...styles.container, height: title ? 260 : 220 }}>
+    <View style={{ ...styles.container, height }}>
       {title && <Text style={styles.title}>{title}</Text>}
 
       <FlatList
