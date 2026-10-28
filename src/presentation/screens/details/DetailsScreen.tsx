@@ -10,13 +10,17 @@ export const DetailsScreen = ({ route }: Props) => {
   const { movieId } = route.params;
   const { isLoading, movie } = useMovie(movieId);
 
-  if (isLoading) {
+  if (isLoading || !movie) {
     return <Text>Loading...</Text>;
   }
 
   return (
     <View>
-      <MovieHeader movie={movie!} />
+      <MovieHeader
+        poster={movie.poster}
+        title={movie.title}
+        subtitle={movie.originalTitle}
+      />
     </View>
   );
 };
