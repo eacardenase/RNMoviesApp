@@ -10,38 +10,27 @@ export const MovieDetails = ({ movie }: Props) => {
   return (
     <>
       <View style={styles.container}>
-        <View style={{ flexDirection: 'row' }}>
-          <Text>{movie.rating}</Text>
+        <View style={styles.genre}>
+          <Text style={styles.textBody}>{movie.rating}</Text>
 
-          <Text style={{ marginLeft: 5 }}>- {movie.genres.join(', ')}</Text>
+          <Text>•</Text>
+
+          <Text style={styles.textBody}>{movie.genres.join(', ')}</Text>
         </View>
 
-        <Text style={{ fontSize: 23, marginTop: 10, fontWeight: 'bold' }}>
-          Story
-        </Text>
+        <Text style={styles.textTitle}>Story</Text>
 
-        <Text style={{ fontSize: 16 }}>{movie.description}</Text>
+        <Text style={styles.textBody}>{movie.description}</Text>
 
-        <Text style={{ fontSize: 23, marginTop: 10, fontWeight: 'bold' }}>
-          Budget
-        </Text>
+        <Text style={styles.textTitle}>Budget</Text>
 
-        <Text style={{ fontSize: 18 }}>
+        <Text style={styles.textBody}>
           {Formatter.currency(movie.budget)} USD
         </Text>
       </View>
 
-      <View style={{ marginTop: 10, marginBottom: 100 }}>
-        <Text
-          style={{
-            fontSize: 23,
-            marginVertical: 10,
-            fontWeight: 'bold',
-            marginHorizontal: 20,
-          }}
-        >
-          Cast
-        </Text>
+      <View style={styles.container}>
+        <Text style={styles.textTitle}>Cast</Text>
       </View>
     </>
   );
@@ -50,5 +39,10 @@ export const MovieDetails = ({ movie }: Props) => {
 const styles = StyleSheet.create({
   container: {
     marginHorizontal: 20,
+  },
+  genre: { flexDirection: 'row', gap: 5 },
+  textTitle: { fontSize: 23, marginTop: 10, fontWeight: 'bold' },
+  textBody: {
+    fontSize: 16,
   },
 });
