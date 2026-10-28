@@ -1,19 +1,33 @@
 import { useCallback, useEffect, useState } from 'react';
 import * as UseCases from '../../core/use-cases';
-import { FullMovie } from '../../core/entities';
+import { Cast, FullMovie } from '../../core/entities';
 import { movieDBFetcher } from '../../config/adapters';
 
 export const useMovie = (movieId: number) => {
   const [isLoading, setIsLoading] = useState(true);
   const [movie, setMovie] = useState<FullMovie>();
+  const [cast, setCast] = useState<Cast[]>([]);
 
   const loadMovie = useCallback(async () => {
-    const fullMovie = await UseCases.getMovieByIdUseCase(
+    const fullMoviePromise = UseCases.getMovieByIdUseCase(
+      movieDBFetcher,
+      movieId,
+    );
+    const castPromise = UseCases.getMovieCastByIdUseCase(
       movieDBFetcher,
       movieId,
     );
 
+    const [fullMovie, fullCast] = await Promise.all([
+      fullMoviePromise,
+      castPromise,
+    ]);
+
+    console.log({ fullCast });
+
     setMovie(fullMovie);
+    setCast(fullCast);
+
     setIsLoading(false);
   }, [movieId]);
 
@@ -22,7 +36,8 @@ export const useMovie = (movieId: number) => {
   }, [loadMovie]);
 
   return {
-    movie,
     isLoading,
+    movie,
+    cast,
   };
 };

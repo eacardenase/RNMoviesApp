@@ -30,13 +30,6 @@ export const useMovies = () => {
         upcomingPromise,
       ]);
 
-    console.log({
-      nowPlayingMovies,
-      popularMovies,
-      topRatedMovies,
-      upcomingMovies,
-    });
-
     setNowPlaying(nowPlayingMovies);
     setPopular(popularMovies);
     setTopRated(topRatedMovies);

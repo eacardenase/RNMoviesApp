@@ -1,5 +1,5 @@
 import { FullMovie, Movie } from '../../core/entities';
-import { MovieResult, Result } from '../interfaces';
+import { MovieDBMovie, Result } from '../interfaces';
 
 export class MovieMapper {
   static fromMovieDBResultToEntity(result: Result): Movie {
@@ -14,7 +14,7 @@ export class MovieMapper {
     };
   }
 
-  static fromMovieDBToEntity(result: MovieResult): FullMovie {
+  static fromMovieDBToEntity(result: MovieDBMovie): FullMovie {
     return {
       id: result.id,
       title: result.title,
