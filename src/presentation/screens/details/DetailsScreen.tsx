@@ -1,8 +1,8 @@
-import { ScrollView, Text } from 'react-native';
+import { ScrollView } from 'react-native';
 import { StackScreenProps } from '@react-navigation/stack';
 import { RootStackParams } from '../../navigation';
 import { useMovie } from '../../hooks';
-import { MovieDetails, MovieHeader } from '../../components';
+import { FullScreenLoader, MovieDetails, MovieHeader } from '../../components';
 
 interface Props extends StackScreenProps<RootStackParams, 'Details'> {}
 
@@ -11,7 +11,7 @@ export const DetailsScreen = ({ route }: Props) => {
   const { isLoading, movie, cast } = useMovie(movieId);
 
   if (isLoading || !movie) {
-    return <Text>Loading...</Text>;
+    return <FullScreenLoader />;
   }
 
   return (

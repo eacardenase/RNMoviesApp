@@ -1,4 +1,5 @@
 export * from './cast/CastActor';
+export * from './loaders/FullScreenLoader';
 export * from './movie/MovieDetails';
 export * from './movie/MovieHeader';
 export * from './movies/HorizontalCarousel';
