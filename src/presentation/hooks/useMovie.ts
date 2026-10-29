@@ -23,8 +23,6 @@ export const useMovie = (movieId: number) => {
       castPromise,
     ]);
 
-    console.log({ fullCast });
-
     setMovie(fullMovie);
     setCast(fullCast);
 
